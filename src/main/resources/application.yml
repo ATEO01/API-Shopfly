@@ -1,7 +1,8 @@
 spring:
   profiles:
-    active: dev  # Par défaut, utilise le profil dev
+    active: ${SPRING_PROFILE_ACTIVE}  # Par défaut, utilise le profil dev
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+SPRING_PROFILE_ACTIVE: dev

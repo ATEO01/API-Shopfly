@@ -70,7 +70,7 @@ public ResponseEntity<Map<String, Object>> getUserRole(@RequestHeader("Authoriza
             userOpt = utilisateurRepository.findByEmail(email);
             if (userOpt.isPresent()) {
                 System.out.println("⚠️ Utilisateur trouvé par EMAIL mais pas par UID!");
-                System.out.println("   → Mise à jour de l'UID: " + uid);
+                System.out.println("   Mise à jour de l'UID: " + uid);
                 Utilisateur user = userOpt.get();
                 user.setFirebaseUid(uid);
                 utilisateurRepository.save(user);
