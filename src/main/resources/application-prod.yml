@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME} 
+    password: ${DATABASE_PASSWORD}
+  
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+
+logging:
+  level:
+    com.ecommerce: WARN
+
+server:
+  port: 8080
+
+#Informations de la BD sur supabase
+DATABASE_URL: postgresql://postgres.oxprkgtttncqqznbcprd:[3Gey5HQ7BufgxxcQ]@aws-1-eu-west-2.pooler.supabase.com:6543/postgres
+DATABASE_USERNAME: postgres.oxprkgtttncqqznbcprd
+DATABASE_PASSWORD: 3Gey5HQ7BufgxxcQ
+
+#URLs
+app:
+  frontend:
+    url: https://e-commerce-f9c51.web.app
+  backend:
+    url: http://localhost:8080
+  cors:
+    allowed-origins: ${app.frontend.url}
+
+#kpay pour les paiements
+kpay:
+  api:
+    url: https://admin.kpay.site/api/v1
+    key: kpay_647d690a7f5cdbd2d7323b4f25bfdd9076c9139b9fd20d49
+    secret:
+      key: 0df1a9ce03ba14c5130d0cde76a1cf53e18064001b2ccf2985723a5be7075657

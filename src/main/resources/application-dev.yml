@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce
+    username: postgres
+    password: ateo1234
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  mail:
+    host: localhost
+    port: 1025
+    username:
+    password:
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+    protocol: stmp
+server:
+  port: 8080
+
+#URLs
+app:
+  frontend:
+    url: http://localhost:4200
+  backend:
+    url: http://localhost:8080
+  cors:
+    allowed-origins: ${app.frontend.url}
+
+# kpay pour les paiements
+kpay:
+  api:
+    url: https://admin.kpay.site/api/v1
+    key: kpay_647d690a7f5cdbd2d7323b4f25bfdd9076c9139b9fd20d49
+    secret:
+      key: 0df1a9ce03ba14c5130d0cde76a1cf53e18064001b2ccf2985723a5be7075657
