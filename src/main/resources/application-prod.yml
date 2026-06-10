@@ -4,21 +4,21 @@ spring:
     username: ${DATABASE_USERNAME} 
     password: ${DATABASE_PASSWORD}
   
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+  #mail:
+   # host: smtp.gmail.com
+   # port: 587
+   # username: ${MAIL_USERNAME}
+   # password: ${MAIL_PASSWORD}
+   # properties:
+    #  mail:
+        # smtp:
+        #   auth: true
+        #   starttls:
+        #     enable: true
   
-  redis:
-    host: ${REDIS_HOST}
-    port: ${REDIS_PORT}
+ # redis:
+  #  host: ${REDIS_HOST}
+   # port: ${REDIS_PORT}
 
 logging:
   level:
@@ -28,7 +28,7 @@ server:
   port: 8080
 
 #Informations de la BD sur supabase
-DATABASE_URL: postgresql://postgres.oxprkgtttncqqznbcprd:[3Gey5HQ7BufgxxcQ]@aws-1-eu-west-2.pooler.supabase.com:6543/postgres
+DATABASE_URL: jdbc:postgresql://postgres.oxprkgtttncqqznbcprd:[3Gey5HQ7BufgxxcQ]@aws-1-eu-west-2.pooler.supabase.com:6543/postgres
 DATABASE_USERNAME: postgres.oxprkgtttncqqznbcprd
 DATABASE_PASSWORD: 3Gey5HQ7BufgxxcQ
 
