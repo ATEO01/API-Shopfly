@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME} 
-    password: ${DATABASE_PASSWORD}
+    #username: ${DATABASE_USERNAME} 
+    #password: ${DATABASE_PASSWORD}
   
   #mail:
    # host: smtp.gmail.com
@@ -28,9 +28,9 @@ server:
   port: 8080
 
 #Informations de la BD sur supabase
-DATABASE_URL: jdbc:postgresql://postgres.oxprkgtttncqqznbcprd:[3Gey5HQ7BufgxxcQ]@aws-1-eu-west-2.pooler.supabase.com:6543/postgres
-DATABASE_USERNAME: postgres.oxprkgtttncqqznbcprd
-DATABASE_PASSWORD: 3Gey5HQ7BufgxxcQ
+DATABASE_URL: jdbc:postgresql://aws-1-eu-west-2.pooler.supabase.com:6543/postgres?user=postgres.oxprkgtttncqqznbcprd&password=7uq31LVG00YQHwoJ&sslmode=require
+#DATABASE_USERNAME: postgres.oxprkgtttncqqznbcprd
+#DATABASE_PASSWORD: 7uq31LVG00YQHwoJ
 
 #URLs
 app:
