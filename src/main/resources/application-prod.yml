@@ -39,7 +39,7 @@ app:
   backend:
     url: http://localhost:8080
   cors:
-    allowed-origins: ${app.frontend.url}
+    allowed-origins: ${APP_COLORS_ALLOWED_ORIGINS}
 
 #kpay pour les paiements
 kpay:
