@@ -19,10 +19,10 @@ public class InitService implements CommandLineRunner { //execute au demarrage g
     @Override
     public void run(String... args) throws Exception {
 
-        String Email = "qdb@gmail.com";
-        String Password = "Qdb12345";
-        String nom = "qdb";
-        String Prenom = "Admin";
+        String Email = "ateotsafack@gmail.com";
+        String Password = "Ateo1234";
+        String nom = "tsafack";
+        String Prenom = "Ateo";
 
         // Vérifier si l'admin existe déjà
         boolean adminExiste = utilisateurRepository.findByEmail("Email").isPresent();
@@ -35,7 +35,7 @@ public class InitService implements CommandLineRunner { //execute au demarrage g
                 UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                     .setEmail(Email)
                     .setPassword(Password)  
-                    .setDisplayName("Admin Qdb")
+                    .setDisplayName("Ateo tsafack")
                     .setEmailVerified(true);  
                 
                 UserRecord userRecord = FirebaseAuth.getInstance().createUser(request);
