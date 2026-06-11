@@ -3,6 +3,14 @@ spring:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME} 
     password: ${DATABASE_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        temp: 
+          use_jdbc_meatadata_defaults: false
   
   #mail:
    # host: smtp.gmail.com
