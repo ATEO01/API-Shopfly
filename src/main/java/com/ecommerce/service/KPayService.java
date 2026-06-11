@@ -45,7 +45,7 @@ public class KPayService {
             "amount", montant,
             "currency", "XAF",
             "phoneNumber", telephone,
-            "paymentMethod", operateur,
+            "provider", operateur,
             "externalId", externalId
         );
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(body, getHeaders());
