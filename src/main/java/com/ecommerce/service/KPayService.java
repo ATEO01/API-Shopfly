@@ -44,7 +44,7 @@ public class KPayService {
         Map<String, Object> body = Map.of(
             "amount", montant,
             "currency", "XAF",
-            "phoneNumber", telephone,
+            "paymentMethod", telephone,
             "provider", operateur,
             "externalId", externalId
         );
