@@ -45,6 +45,6 @@ app:
 kpay:
   api:
     url: https://admin.kpay.site/api/v1
-    key: kpay_test_3d5d8aae4f6122aefbfacb5c566485a2b1ff7ed6f344398e
+    key: kpay_test_7fc55f857c129811f07eebc0619bb5ec26d22dfd4a22f198
     secret:
-      key: 935c0db86cd86db65d1337b87210d450c36162a35d9670e90714751c53a1c2ec
+      key: 86cd716f493f27fce5fc2766c4dbff9a278bc8286f6e616d8be188437da1520c

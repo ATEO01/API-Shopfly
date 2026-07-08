@@ -286,6 +286,84 @@ public class CommandeClientController {
         
         return ResponseEntity.ok(response);
     }
+
+    // ✅ Mettre à jour le statut d'une commande (client)
+@PutMapping("/{id}/statut")
+public ResponseEntity<Map<String, Object>> updateStatutClient(
+        @PathVariable Long id,
+        @RequestBody Map<String, String> request,
+        @RequestHeader("Authorization") String token) {
+    
+    Map<String, Object> response = new HashMap<>();
+    
+    try {
+        // 1. Vérifier l'utilisateur
+        Utilisateur utilisateur = getUtilisateur(token);
+        if (utilisateur == null) {
+            response.put("success", false);
+            response.put("message", "Utilisateur non trouvé");
+            return ResponseEntity.badRequest().body(response);
+        }
+        
+        // 2. Vérifier la commande
+        Commande commande = commandeRepository.findById(id).orElse(null);
+        if (commande == null) {
+            response.put("success", false);
+            response.put("message", "Commande non trouvée");
+            return ResponseEntity.badRequest().body(response);
+        }
+        
+        // 3. Vérifier que la commande appartient à l'utilisateur
+        if (!commande.getUtilisateur().getId().equals(utilisateur.getId())) {
+            response.put("success", false);
+            response.put("message", "Vous n'êtes pas autorisé à modifier cette commande");
+            return ResponseEntity.status(403).body(response);
+        }
+        
+        // 4. Récupérer le nouveau statut
+        String nouveauStatut = request.get("statut");
+        
+        // 5. Vérifier que le statut est valide
+        String[] statutsValides = {"PAYEE", "ANNULEE"};
+        boolean valide = false;
+        for (String s : statutsValides) {
+            if (s.equals(nouveauStatut)) {
+                valide = true;
+                break;
+            }
+        }
+        
+        if (!valide) {
+            response.put("success", false);
+            response.put("message", "Statut invalide pour un client");
+            return ResponseEntity.badRequest().body(response);
+        }
+        
+        // 6. Vérifier que la commande est en attente
+        if (!"EN_ATTENTE".equals(commande.getStatut())) {
+            response.put("success", false);
+            response.put("message", "Seules les commandes en attente peuvent être modifiées");
+            return ResponseEntity.badRequest().body(response);
+        }
+        
+        // 7. Mettre à jour le statut
+        commande.setStatut(nouveauStatut);
+        commandeRepository.save(commande);
+        
+        System.out.println("📝 Commande " + id + " : " + "EN_ATTENTE" + " → " + nouveauStatut);
+        
+        response.put("success", true);
+        response.put("message", "Statut mis à jour avec succès");
+        response.put("nouveauStatut", nouveauStatut);
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        response.put("success", false);
+        response.put("message", "Erreur: " + e.getMessage());
+    }
+    
+    return ResponseEntity.ok(response);
+}
     
     // Confirmer le paiement (webhook)
     @PostMapping("/paiement/confirmer")
